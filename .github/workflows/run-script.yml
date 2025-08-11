@@ -1,0 +1,35 @@
+name: Run PHP Script and Update Result
+
+# Run every 7 minutes
+on:
+  schedule:
+    - cron: "*/7 * * * *"
+
+jobs:
+  run-php-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up PHP
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1' # Use the PHP version you need
+
+      # Step 3: Run the PHP script and save the output
+      - name: Run PHP script
+        run: |
+          php xyz.php > result.txt
+
+      # Step 4: Commit and push the changes
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add result.txt
+          git commit -m "Update result.txt with PHP script output"
+          git push
