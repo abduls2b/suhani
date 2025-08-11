@@ -3,7 +3,7 @@ name: Run PHP Script and Update Result
 # Run every 7 minutes
 on:
   schedule:
-    - cron: "*/7 * * * *"
+    - cron: "*/2 * * * *"
 
 jobs:
   run-php-script:
