@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>JioTV Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.11/shaka-player.ui.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.11/controls.min.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+    }
+    .shaka-video-container {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
+    .shaka-spinner-container,
+    .shaka-spinner,
+    .shaka-spinner-svg {
+      display: none !important;
+    }
+  </style>
+</head>
+  <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
+  <script type='text/javascript' src='//eltontry.com/de/9a/8b/de9a8b3019752970ae15f259ad4a7fa0.js'></script>
+<body>
+  <div class="shaka-video-container" id="player" data-shaka-player data-shaka-controls>
+    <video autoplay muted playsinline></video>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+  const V1 = JSON.parse(localStorage.getItem("streamConfig"));
+  if (!V1 || !V1.mpd) {
+    alert("Missing stream config");
+    return;
+  }
+  shaka.polyfill.installAll();
+  if (!shaka.Player.isBrowserSupported()) {
+    alert("Shaka Player not supported");
+    return;
+  }
+  const V2 = document.querySelector("video");
+  const V3 = document.getElementById("player");
+  const V4 = new shaka.Player(V2);
+  const V5 = new shaka.ui.Overlay(V4, V3, V2);
+  V5.configure({
+    'controlPanelElements': ["play_pause", "time_and_duration", "mute", "volume", "spacer", "language", "captions", "picture_in_picture", "quality", "fullscreen"],
+    'volumeBarColors': {
+      'base': "rgba(63, 187, 1, 1)",
+      'level': "rgb(255, 69, 0)"
+    },
+    'seekBarColors': {
+      'base': "rgb(41, 41, 163)",
+      'buffered': "rgb(35, 99, 3)",
+      'played': "rgba(63, 187, 1, 1)"
+    }
+  });
+  V4.configure({
+    'drm': {
+      'clearKeys': V1.drm
+    },
+    'streaming': {
+      'bufferingGoal': 0x1e,
+      'rebufferingGoal': 0x5,
+      'bufferBehind': 0x1e,
+      'retryParameters': {
+        'timeout': 0x3a98,
+        'maxAttempts': 0x3,
+        'baseDelay': 0x1f4,
+        'backoffFactor': 1.5
+      },
+      'segmentRequestTimeout': 0x2710
+    },
+    'manifest': {
+      'retryParameters': {
+        'timeout': 0x2710,
+        'maxAttempts': 0x2
+      }
+    }
+  });
+  V4.getNetworkingEngine().registerRequestFilter((V6, V7) => {
+    V7.headers.Referer = V1.referer;
+    V7.headers["User-Agent"] = V1.userAgent;
+    V7.headers.Cookie = V1.token;
+    if ((V6 === shaka.net.NetworkingEngine.RequestType.MANIFEST || V6 === shaka.net.NetworkingEngine.RequestType.SEGMENT) && !V7.uris[0].includes("__hdnea__=")) {
+      const V9 = V7.uris[0].includes('?') ? '&' : '?';
+      V7.uris[0] += V9 + V1.token;
+    }
+  });
+  try {
+    await V4.load(V1.mpd);
+    await V2.play();
+  } catch (V8) {
+    console.error("Playback error:", V8);
+  }
+  ["click", "touchstart"].forEach(V10 => {
+    document.addEventListener(V10, () => {
+      if (V2.muted) {
+        V2.muted = false;
+      }
+    }, {
+      'once': true
+    });
+  });
+});
+  </script>
+
+  
+</body>
+</html>
