@@ -1,0 +1,11 @@
+# .htaccess for clean URLs — forwards all requests to index.php while preserving PATH_INFO
+RewriteEngine On
+
+# If the request is for an existing file or directory, serve it directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Otherwise internally rewrite to index.php and keep the original path as PATH_INFO
+# This allows URLs like /playlist.m3u or /getlink/123 to work without index.php in URL.
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
