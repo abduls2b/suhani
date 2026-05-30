@@ -1,4 +1,6 @@
 #EXTM3U
+#EXT-X-VERSION:3
+#EXTM3U
 x-tvg-url=https://avkb.short.gy/jioepg.xml.gz
 #EXTINF:-1 tvg-id="143" group-title="English" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/CNBCTV18Prime.png",CNBC TV18 Prime 
 #KODIPROP:inputstream.adaptive.license_type=clearkey 
