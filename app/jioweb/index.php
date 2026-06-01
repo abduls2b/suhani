@@ -201,9 +201,9 @@ $context = stream_context_create([
   ]
 ]);
 
-//$m3uContent = file_get_contents("https://raw.githubusercontent.com/alex8875/m3u/refs/heads/main/jtv.m3u", false, $context);
+$m3uContent = file_get_contents("https://raw.githubusercontent.com/abduls2b/suhani/refs/heads/main/playlist.m3u", false, $context);
 
-$m3uContent = file_get_contents("playlist.m3u", false, $context);
+//$m3uContent = file_get_contents("playlist.m3u", false, $context);
 
 
 $channels = [];
