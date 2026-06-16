@@ -337,8 +337,8 @@
         "id": "291",
         "category": "Entertainment",
         "url": "https://jiotvmblive.cdn.jio.com/bpk-tv/Sony_HD_MOB/WDVLive/index.mpd",
-        "keyId": "null",
-        "key": "null",
+        "keyId": "a62d4ca4ef095564bede0fe525956634",
+        "key": "5e34a5126bfe29c18947046513f18cce",
         "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Sony_HD.png"
     },
     {
@@ -742,8 +742,8 @@
         "id": "482",
         "category": "Movies",
         "url": "https://jiotvmblive.cdn.jio.com/bpk-tv/Colors_Cineplex_MOB/WDVLive/index.mpd",
-        "keyId": "null",
-        "key": "null",
+        "keyId": "a7a544c972e7520fbe89f80191c21a7b",
+        "key": "f7e753d587b7e33814e6eeb2a4c97d99",
         "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Colors_Cineplex.png"
     },
     {
