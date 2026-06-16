@@ -130,8 +130,8 @@
         "id": "182",
         "category": "Movies",
         "url": "https://jiotvmblive.cdn.jio.com/bpk-tv/b4u_movies/HLSPartner/index.m3u8",
-        "keyId": "null",
-        "key": "null",
+        "keyId": "09187bccb7ec59428352a31b4b321ce0",
+        "key": "25b08b1c7a004e43ef92c239f93e6613",
         "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/b4u_movies.png"
     },
     {
@@ -139,8 +139,8 @@
         "id": "183",
         "category": "Music",
         "url": "https://jiotvmblive.cdn.jio.com/bpk-tv/b4u_music/HLSPartner/index.m3u8",
-        "keyId": "null",
-        "key": "null",
+         "keyId": "09187bccb7ec59428352a31b4b321ce0",
+        "key": "25b08b1c7a004e43ef92c239f93e6613",
         "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/B4U_Music.png"
     },
     {
