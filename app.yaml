@@ -1,6 +1,0 @@
-kind: wasmer.io/App.v0
-name: mahir
-owner: abduls2b
-package: .
-scaling:
-  mode: single_concurrency
